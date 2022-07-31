@@ -1,0 +1,38 @@
+{% extends 'base_navbar.html' %}
+{% load static %}
+{% block title %}Abonnements{% endblock title %}
+{% block content %}
+    <div class="follow">
+        <form action="{% url 'follow' %}" method="post"> {% csrf_token %}
+            <div>
+                <label>
+                    <input type="text" name="following" placeholder="Pseudo">
+                </label>
+                <button type="submit">Envoyer</button>
+            </div>
+        </form>
+        {% include 'blog/includes/messages.html' %}
+     <h2>Mes Abonnements</h2>
+        {% if following %}
+            {% for user in following %}
+                <div>
+                    {{ user.followed_user.username }}
+                     <a href="{% url 'delete-follow' user.followed_user.id %}"><img class="navbar_user_img" alt="lit" src={% static 'img/supprimer.png' %}></a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Aucun abonnements</p>
+        {% endif %}
+
+        <h2>Mes Abonnés</h2>
+        {% if followers %}
+            {% for user in followers %}
+                <div>
+                    {{ user.user.username }}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Aucun abonnés</p>
+        {% endif %}
+    </div>
+{% endblock content %}

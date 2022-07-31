@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form class="container" method="post">
+    <p class="container_titre">Inscription</p>
+        <div class="container_input">{{ form}}</div>
+        {% csrf_token %}
+        <div class="container_button">
+        <button class="btn" type="submit" >S’inscrire</button>
+    </div>
+    </form>
+
+{% endblock content %}

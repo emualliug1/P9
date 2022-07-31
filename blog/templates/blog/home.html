@@ -1,0 +1,32 @@
+{% extends 'base_navbar.html' %}
+{% block title %}LITReview{% endblock title %}
+{% block content %}
+    <div class="home">
+    {% for ticket in tickets %}
+        <div class="home_ticket">
+            <div class="home_ticket_header">
+                <h1 class="home_ticket_title">{{ ticket.title|capfirst }}</h1>
+                <p class="home_ticket_date">Ticket:{{ ticket.user|capfirst }} le {{ ticket.time_created }}</p>
+            </div>
+            <div class="home_ticket_main">
+            <img class="home_ticket_img" alt="lit" src="{{ ticket.image.url }}">
+            <p class="home_ticket_text">{{ ticket.description }}</p>
+            </div>
+        </div>
+        {% for review in ticket.review_set.all %}
+            <div class="home_review">
+            <div class="home_review_header">
+                <h2 class="home_review_title">{{ review.headline|capfirst }}</h2>
+                <p class="home_review_date">Review:{{ review.user|capfirst }} le {{ review.time_created }}</p>
+            </div>
+                <div class="home_review_rating">
+                <p class="starability-result" data-rating={{ review.rating }}>
+                Rated: {{ review.rating }} stars
+                </p>
+                </div>
+                <p class="home_review_text">{{ review.body }}</p>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    </div>
+{% endblock content %}

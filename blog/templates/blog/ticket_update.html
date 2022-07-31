@@ -1,0 +1,9 @@
+{% extends 'base_navbar.html' %}
+{% block title %}LITReview{% endblock title %}
+{% block content %}
+      <form class="home" method="post" enctype="multipart/form-data">
+        {{ form}}
+        {% csrf_token %}
+        <button class="btn" type="submit" >Update ticket</button>
+    </form>
+{% endblock content %}

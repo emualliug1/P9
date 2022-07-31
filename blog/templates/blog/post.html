@@ -1,0 +1,34 @@
+{% extends 'base_navbar.html' %}
+{% load static %}
+{% block title %} Posts {% endblock %}
+{% block content %}
+    <div class="post">
+    <div class="post_ticket">
+        <h1 class="post_ticket_title">Tickets</h1>
+            {% for ticket in tickets_user %}
+                <div class="post_ticket_content">
+                    <div class="post_ticket_content_title>">{{ ticket.title|capfirst}}</div>
+                    <div class="post_ticket_content_date>">Le {{ ticket.time_created }}</div>
+                    <div class="post_ticket_content_menu">
+                        <a href="{% url 'ticket-update' ticket.id %}"><img class="navbar_user_img" alt="lit" src={% static 'img/modifer.png' %}></a>
+                        <a href="{% url 'ticket-delete' ticket.id %}"><img class="navbar_user_img" alt="lit" src={% static 'img/supprimer.png' %}></a>
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+    <div class="post_review">
+    <h1 class="post_review_title">Reviews</h1>
+            {% for review in reviews_user %}
+               <div class="post_review_content">
+                    <div class="post_review_content_title>">{{ review.headline|capfirst}}</div>
+                   <div class="starability-result" data-rating={{ review.rating }}>{{ review.rating }}</div>
+                    <div class="post_review_content_date>">Le {{ review.time_created }}</div>
+                    <div class="post_review_content_menu">
+                        <a href="{% url 'review-update' review.id %}"><img class="navbar_user_img" alt="lit" src={% static 'img/modifer.png' %}></a>
+                        <a href="{% url 'review-delete' review.id %}"><img class="navbar_user_img" alt="lit" src={% static 'img/supprimer.png' %}></a>
+                    </div>
+                </div>
+            {% endfor %}
+     </div>
+    </div>
+{% endblock content %}

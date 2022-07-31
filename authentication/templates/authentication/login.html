@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Connexion{% endblock title %}
+
+{% block content %}
+        <form class="container" method="post">
+            <img class="container_image" alt="litreview" src={% static 'img/LITReview.png' %}>
+            <p class="container_titre">LITReview</p>
+            <p class="container_error">{{ message }}</p>
+            <div class="container_input">
+                {{ form}}
+                {% csrf_token %}
+            </div>
+            <div class="container_button>">
+                <button class="btn" type="submit" value="Submit">Connexion</button>
+                <button class="btn" onclick="self.location.href={% url 'signup' %}" >S'inscrire</button>
+            </div>
+        </form>
+{% endblock content %}
