@@ -1,7 +1,9 @@
 {% extends 'base_navbar.html' %}
 {% block title %}LITReview{% endblock title %}
 {% block content %}
-      <form class="home" method="post" enctype="multipart/form-data">
+    <h1 class="block_title">Review</h1>
+    {% include "blog/includes/ticket_snippet.html" %}
+      <form class="form_content" method="post" enctype="multipart/form-data">
         {{ form}}
         {% csrf_token %}
         <button class="btn" type="submit" >Valider</button>

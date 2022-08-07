@@ -1,9 +1,10 @@
 {% extends 'base_navbar.html' %}
 {% block title %}LITReview{% endblock title %}
 {% block content %}
-      <form class="home" method="post" enctype="multipart/form-data">
+    <h1 class="block_title">Supprimer Ticket</h1>
+      <form class="form_content" method="post" enctype="multipart/form-data">
         {{ form}}
         {% csrf_token %}
-        <button class="btn" type="submit" >Supprimer ticket</button>
+        <button class="btn" type="submit" >Supprimer</button>
     </form>
 {% endblock content %}

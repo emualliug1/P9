@@ -11,10 +11,10 @@
         <nav class="navbar">
             <div class="navbar_home">
                 <img class="navbar_home_img" alt="lit" src={% static 'img/LITReview.png' %}>
-                <a class="navbar_home_link" href="{% url 'home' %}">LITReview</a>
+                <a class="navbar_home_link" href="{% url 'flux' %}">LITReview</a>
             </div>
             <div class="navbar_menu">
-                <a class="navbar_menu_link" href="#">Flux</a>
+                <a class="navbar_menu_link" href="{% url 'flux' %}">Flux</a>
                 <a class="navbar_menu_link" href="{% url 'posts' %}">Posts</a>
                 <a class="navbar_menu_link" href="{% url 'follow'%}">Abonnements</a>
                 <div class="navbar_menu_secondaire">

@@ -1,0 +1,15 @@
+{% extends 'base_navbar.html' %}
+{% load myfilters %}
+{% block title %} Flux {% endblock %}
+{% block content %}
+ <h1 class="block_title">Flux</h1>
+        {% if tickets_reviews %}
+            {% for data in tickets_reviews %}
+                {% if data|model_type == 'Ticket' %}
+                    {% include 'blog/includes/ticket_snippet.html' with ticket=data %}
+                {% else %}
+                    {% include 'blog/includes/review_snippet.html' with review=data %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+{% endblock %}

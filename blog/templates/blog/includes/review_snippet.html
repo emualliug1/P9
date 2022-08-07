@@ -1,0 +1,23 @@
+{% load static %}
+<div class="review">
+    <div class="review_header">
+        <div class="review_title_rating">
+        <h2 class="review_title">{{ data.headline|capfirst }}</h2>
+        <div class="review_rating">
+            <div class="starability-result" data-rating={{ review.rating }}>Rated: {{ review.rating }} stars</div>
+        </div>
+        </div>
+            <div class="content_menu">
+            <div class="review_date">
+                Review:{{ review.user|capfirst }} le {{ review.time_created}}
+            </div>
+          {% if request.get_full_path == "/posts/" %}
+            <a href="{% url 'review-update' review.id %}"><img class="navbar_user_img" alt="lit" src={% static 'img/modifer.png' %}></a>
+            <a href="{% url 'review-delete' review.id %}"><img class="navbar_user_img" alt="lit" src={% static 'img/supprimer.png' %}></a>
+          {% endif %}
+             </div>
+    </div>
+        <p class="review_text">{{ review.body }}</p>
+</div>
+
+

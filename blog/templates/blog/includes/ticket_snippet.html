@@ -1,0 +1,29 @@
+{% load static %}
+{% load myfilters %}
+<div class="ticket">
+    <div class="ticket_header">
+        <h1 class="ticket_title">{{ ticket.title|capfirst }}</h1>
+        <div class="content_menu">
+        <p class="ticket_date">Ticket:{{ ticket.user|capfirst }} le {{ ticket.time_created }}</p>
+         {% if request.get_full_path == "/posts/" %}
+            <a href="{% url 'ticket-update' ticket.id %}"><img class="navbar_user_img" alt="lit" src={% static 'img/modifer.png' %}></a>
+            <a href="{% url 'ticket-delete' ticket.id %}"><img class="navbar_user_img" alt="lit" src={% static 'img/supprimer.png' %}></a>
+        {% endif %}
+        </div>
+    </div>
+    <div class="ticket_main">
+        <img class="ticket_img" alt="lit" src="{{ ticket.image.url }}">
+        <div class="ticket_text">
+            {{ ticket.description }}
+        {% if request.get_full_path == "/flux/" %}
+            <div class ='ticket_button'>
+            {% if ticket.has_review == False %}
+                <button class="btn" onclick=self.location.href="{% url 'review' ticket.id %}">Critique</button>
+            {% endif %}
+            </div>
+        {% endif %}
+        </div>
+
+    </div>
+</div>
+

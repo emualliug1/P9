@@ -1,7 +1,8 @@
 {% extends 'base_navbar.html' %}
 {% block title %}LITReview{% endblock title %}
 {% block content %}
-      <form class="home" method="post" enctype="multipart/form-data">
+    <h1 class="block_title">Ticket & Review</h1>
+      <form class="form_content" method="post" enctype="multipart/form-data">
           {{ form_ticket}}
           {{ form_review }}
           {% csrf_token %}

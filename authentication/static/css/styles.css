@@ -5,7 +5,7 @@ body {
     display: flex;
     flex-direction: column;
     height : 100%;
-    padding-top: 70px;
+    padding-top: 50px;
 }
 
 input{
@@ -17,7 +17,7 @@ input{
     border-radius: 0.25rem;
 }
 textarea{
-    height: 150px;
+    height: 100px;
     margin-bottom: 10px;
     resize: none;
 }
@@ -80,8 +80,9 @@ input[type="file" i]{
     padding: 5px;
     background-color: #007bff;
     color: white;
-    border-radius: 20px;
     border:none;
+    width: 80px;
+    cursor: pointer;
 }
 
 .btn:hover{
@@ -212,14 +213,132 @@ input[type="file" i]{
 }
 
 /*sign in*/
-.home, .post{
+
+.form_content{
+    display: flex;
+    flex-direction: column;
     margin-left: 20%;
     margin-right: 20%;
+}
+
+.content_menu{
+    display: flex;
+    align-items: center;
+}
+
+.block_title{
+    display: flex;
+    color:#007bff;
+    border-bottom: 1px solid #000;
+    font-family:Lobster,Serif,sans-serif;
+    margin-left: 20%;
+    margin-right: 20%;
+    justify-content: center;
+}
+
+.ticket, .review{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20%;
+    margin-right: 20%;
+    border-radius: 20px ;
+    box-shadow: rgba(0, 0, 0, 0.56) 0 22px 70px 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.ticket_header, .review_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ticket_title,.review_title{
+    font-family:Lobster,Serif,sans-serif;
+    color:#007bff;
+}
+
+.ticket_date, .review_date{
+    font-family: Roboto, sans-serif;
+    color:grey;
+    font-size: 12px;
+}
+
+.ticket_main{
+    display: flex;
+}
+
+.ticket_img{
+    height: 200px;
+    width: 150px;
+    padding: 10px;
+}
+.ticket_description,.review_text{
+    margin: 0;
+    padding: 10px;
+}
+
+.ticket_text{
     display: flex;
     flex-direction: column;
 }
 
-.home_ticket, .home_review , .post_ticket , .post_review{
+.ticket_button{
+    display: flex;
+    margin-top: 10px;
+}
+
+.review_title_rating{
+    display: flex;
+    align-items: center;
+}
+
+.review_rating{
+    margin-left: 20px;
+}
+
+.follow{
+    margin-left: 20%;
+    margin-right: 20%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.follow_title{
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #000;
+    font-family:Lobster,Serif,sans-serif;
+    color:#007bff;
+}
+
+.follow_user{
+    display: flex;
+    font-family:Lobster,Serif,sans-serif;
+    font-size: 18px;
+}
+
+.follow_username{
+    width: 100px;
+}
+
+.follow_form{
+    display: flex;
+    border-radius: 20px ;
+    box-shadow: rgba(0, 0, 0, 0.56) 0 22px 70px 4px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+input#id_followed_user {
+    display: flex;
+    margin-right: 10px;
+    width: 300px;
+}
+
+.follow_content{
     display: flex;
     flex-direction: column;
     border-radius: 20px ;
@@ -227,71 +346,7 @@ input[type="file" i]{
     padding: 10px;
     margin-bottom: 10px;
 }
-.home_ticket_header, .home_review_header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
-.home_ticket_title,.home_review_title, .post_ticket_title, .post_review_title{
-    font-family:Lobster,Serif,sans-serif;
-    color:#007bff;
-}
-
-.home_ticket_date, .home_review_date{
-    font-family: Roboto, sans-serif;
-    color:grey;
-    font-size: 12px;
-}
-.home_ticket:hover, .home_review:hover{
-    transform:scale(0.99)
-}
-.home_ticket_main{
-    display: flex;
-}
-
-.home_ticket_img{
-    height: 200px;
-    width: 150px;
-    padding: 10px;
-}
-.home_ticket_description,.home_review_text{
-    margin: 0;
-    padding: 10px;
-}
-
-
-.post_ticket_title , .post_review_title{
-    display: flex;
-    justify-content: center;
-    border-bottom: 1px solid #000;
-}
-
-
-.post_ticket_content , .post_review_content{
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 10px;
-    align-items: center;
-}
-.post_ticket_content_title\>{
-    display: flex;
-    width: 445px;
-    font-family:Lobster,Serif,sans-serif;
-}
-
-
-.post_review_content_title\>{
-    display: flex;
-    width: 200px;
-    font-family:Lobster,Serif,sans-serif;
-}
-.post_ticket_content_date\>, .post_review_content_date\> {
-    display: flex;
-    font-family: Roboto, sans-serif;
-    color:grey;
-    font-size: 11px;
-}
 .starability-result {
   position: relative;
   width: 150px;

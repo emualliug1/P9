@@ -2,37 +2,38 @@
 {% load static %}
 {% block title %}Abonnements{% endblock title %}
 {% block content %}
+    <h1 class="block_title">Abonnements</h1>
     <div class="follow">
-        <form action="{% url 'follow' %}" method="post"> {% csrf_token %}
+
+        <form class="follow_form" action="{% url 'follow' %}" method="post"> {% csrf_token %}
             <div>
                 <label>
-                    <input type="text" name="following" placeholder="Pseudo">
+                    <input type="text" name="following" placeholder="Nom d'utilisateur">
                 </label>
-                <button type="submit">Envoyer</button>
+                <button class="btn" type="submit">Envoyer</button>
             </div>
         </form>
-        {% include 'blog/includes/messages.html' %}
-     <h2>Mes Abonnements</h2>
+    {% include 'blog/includes/messages.html' %}
+    <div class="follow_content">
+     <h2 class="follow_title">Mes Abonnements</h2>
         {% if following %}
             {% for user in following %}
-                <div>
-                    {{ user.followed_user.username }}
+                <div class="follow_user">
+                <div class="follow_username">{{ user.followed_user.username|capfirst }}</div>
                      <a href="{% url 'delete-follow' user.followed_user.id %}"><img class="navbar_user_img" alt="lit" src={% static 'img/supprimer.png' %}></a>
                 </div>
             {% endfor %}
-        {% else %}
-            <p>Aucun abonnements</p>
         {% endif %}
-
-        <h2>Mes Abonnés</h2>
+    </div>
+    <div class="follow_content">
+        <h2 class="follow_title">Mes Abonnés</h2>
         {% if followers %}
             {% for user in followers %}
-                <div>
-                    {{ user.user.username }}
+                <div class="follow_user">
+                    {{ user.user.username|capfirst }}
                 </div>
             {% endfor %}
-        {% else %}
-            <p>Aucun abonnés</p>
         {% endif %}
+    </div>
     </div>
 {% endblock content %}

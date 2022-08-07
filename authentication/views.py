@@ -4,7 +4,6 @@ from django.views.generic import View
 from django.conf import settings
 from .forms import LoginForm, SignupForm, ChangePasswordForm
 from django.contrib.auth import update_session_auth_hash
-from django.contrib.auth.decorators import login_required
 
 
 class LoginPageView(View):
@@ -25,7 +24,7 @@ class LoginPageView(View):
             )
             if user is not None:
                 login(request, user)
-                return redirect('home')
+                return redirect('flux')
         message = 'Identifiants invalides'
         return render(request, self.template_name, context={'form': form, 'message': message})
 

@@ -1,12 +1,12 @@
 from django import forms
-from blog.models import Ticket, Review
-
+from blog.models import Ticket, Review ,UserFollows
+from authentication.models import User
 
 class TicketForm(forms.ModelForm):
     title = forms.CharField(label='', widget=forms.TextInput(
         attrs={
             'class:': 'form-control',
-            'placeholder': "Titre", })
+            'placeholder': "Titre Ticket", })
     )
     description = forms.CharField(label='', widget=forms.Textarea(
         attrs={
@@ -28,7 +28,7 @@ class ReviewForm(forms.ModelForm):
     headline = forms.CharField(label='', widget=forms.TextInput(
         attrs={
             'class:': 'form-control',
-            'placeholder': "Gros titre", })
+            'placeholder': "Titre Review", })
         )
 
     body = forms.CharField(label='', widget=forms.Textarea(
@@ -40,3 +40,4 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ('headline', 'rating', 'body')
+
