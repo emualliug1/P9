@@ -6,8 +6,14 @@
         <div class="content_menu">
         <p class="ticket_date">Ticket:{{ ticket.user|capfirst }} le {{ ticket.time_created }}</p>
          {% if request.get_full_path == "/posts/" %}
-            <a href="{% url 'ticket-update' ticket.id %}"><img class="navbar_user_img" alt="lit" src={% static 'img/modifer.png' %}></a>
-            <a href="{% url 'ticket-delete' ticket.id %}"><img class="navbar_user_img" alt="lit" src={% static 'img/supprimer.png' %}></a>
+            <div class="ticket_button_modify">
+             <button type="button" class="btn small" onclick=self.location.href="{% url 'ticket-update' ticket.id %}">
+                 <span class="fa fa-pencil"></span>
+             </button>
+             <button type="button" class="btn small red" onclick=self.location.href="{% url 'ticket-delete' ticket.id %}">
+                 <span class="fa fa-trash"></span>
+             </button>
+             </div>
         {% endif %}
         </div>
     </div>
@@ -15,15 +21,14 @@
         <img class="ticket_img" alt="lit" src="{{ ticket.image.url }}">
         <div class="ticket_text">
             {{ ticket.description }}
-        {% if request.get_full_path == "/flux/" %}
-            <div class ='ticket_button'>
-            {% if ticket.has_review == False %}
-                <button class="btn" onclick=self.location.href="{% url 'review' ticket.id %}">Critique</button>
+            {% if request.get_full_path == "/flux/" %}
+                <div class ='ticket_button'>
+                    {% if ticket.has_review == False %}
+                        <button class="btn" onclick=self.location.href="{% url 'review' ticket.id %}">Critique</button>
+                    {% endif %}
+                </div>
             {% endif %}
-            </div>
-        {% endif %}
         </div>
-
     </div>
 </div>
 

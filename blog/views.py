@@ -24,7 +24,7 @@ class TicketView(View):
             ticket = form.save(commit=False)
             ticket.user = request.user
             ticket.save()
-            return redirect('home')
+            return redirect('posts')
         return render(request, self.template_name, context={'form': form})
 
 
@@ -48,7 +48,7 @@ class ReviewView(View):
             review.save()
             ticket.has_review = True
             ticket.save()
-            return redirect("flux")
+            return redirect("posts")
         return render(request, self.template_name, context={'ticket': ticket, 'form': form})
 
 
@@ -68,13 +68,13 @@ class TicketReviewView(View):
         if all([form_ticket.is_valid(), form_review.is_valid()]):
             ticket = form_ticket.save(commit=False)
             ticket.user = request.user
+            ticket.has_review = True
             ticket.save()
             review = form_review.save(commit=False)
             review.ticket = ticket
-            review.ticket.has_review = True
             review.user = request.user
             review.save()
-            return redirect('flux')
+            return redirect('posts')
         return render(request, self.template_name, context={'form_ticket': form_ticket, 'form_review': form_review})
 
 
@@ -218,14 +218,11 @@ class FluxViews(View):
     def get(self, request):
         users_followers = UserFollows.objects.filter(user=request.user)
         users = []
-
         for user in users_followers:
             users.append(user.followed_user)
 
         tickets = Ticket.objects.filter((Q(user=request.user) | Q(user__in=users)))
-
         reviews = Review.objects.filter(Q(user=request.user) | Q(user__in=users))
-
         tickets_reviews = sorted(chain(tickets, reviews), key=lambda obj: obj.time_created, reverse=True)
 
         return render(request, self.template_name, context={'tickets_reviews': tickets_reviews})

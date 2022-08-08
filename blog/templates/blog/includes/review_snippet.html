@@ -7,17 +7,21 @@
             <div class="starability-result" data-rating={{ review.rating }}>Rated: {{ review.rating }} stars</div>
         </div>
         </div>
-            <div class="content_menu">
-            <div class="review_date">
-                Review:{{ review.user|capfirst }} le {{ review.time_created}}
-            </div>
-          {% if request.get_full_path == "/posts/" %}
-            <a href="{% url 'review-update' review.id %}"><img class="navbar_user_img" alt="lit" src={% static 'img/modifer.png' %}></a>
-            <a href="{% url 'review-delete' review.id %}"><img class="navbar_user_img" alt="lit" src={% static 'img/supprimer.png' %}></a>
-          {% endif %}
+        <div class="content_menu">
+        <p class="ticket_date">Review:{{ review.user|capfirst }} le {{ review.time_created }}</p>
+         {% if request.get_full_path == "/posts/" %}
+            <div class="ticket_button_modify">
+             <button type="button" class="btn small" onclick=self.location.href="{% url 'review-update' review.id %}">
+                 <span class="fa fa-pencil"></span>
+             </button>
+             <button type="button" class="btn small red" onclick=self.location.href="{% url 'review-delete' review.id %}">
+                 <span class="fa fa-trash"></span>
+             </button>
              </div>
+        {% endif %}
+        </div>
     </div>
-        <p class="review_text">{{ review.body }}</p>
+    <p class="review_text">{{ review.body }}</p>
 </div>
 
 

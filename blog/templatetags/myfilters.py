@@ -4,8 +4,8 @@ register = template.Library()
 
 
 @register.filter
-def model_type(value):
-    return type(value).__name__
+def obj_type(obj):
+    return type(obj).__name__
 
 
 

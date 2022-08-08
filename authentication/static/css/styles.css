@@ -85,8 +85,25 @@ input[type="file" i]{
     cursor: pointer;
 }
 
+.small{
+    padding: 0.25rem 0.5rem;
+    margin-left: 0.2rem;
+    font-size: .875rem;
+    line-height: 1.5rem;
+    border-radius: 0.2rem;
+    width: 1.875rem;
+}
+
+.red{
+    background-color: #dc3545;
+}
+
 .btn:hover{
    background-color:#0056b2;
+}
+
+.red:hover{
+    background-color: #C62F3E;
 }
 
 /* menu */
@@ -223,7 +240,7 @@ input[type="file" i]{
 
 .content_menu{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .block_title{
@@ -270,7 +287,7 @@ input[type="file" i]{
 .ticket_img{
     height: 200px;
     width: 150px;
-    padding: 10px;
+    padding-right: 10px;
 }
 .ticket_description,.review_text{
     margin: 0;
@@ -282,10 +299,17 @@ input[type="file" i]{
     flex-direction: column;
 }
 
+.ticket_button_modify{
+    display: flex;
+    justify-content: space-between;
+}
+
+
 .ticket_button{
     display: flex;
     margin-top: 10px;
 }
+
 
 .review_title_rating{
     display: flex;
@@ -316,6 +340,8 @@ input[type="file" i]{
     display: flex;
     font-family:Lobster,Serif,sans-serif;
     font-size: 18px;
+    align-items: flex-end;
+    margin-top: 5px;
 }
 
 .follow_username{

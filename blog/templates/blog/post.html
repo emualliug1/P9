@@ -5,9 +5,9 @@
 <h1 class="block_title">Posts</h1>
     {% if tickets_user_reviews_user  %}
         {% for data in tickets_user_reviews_user %}
-            {% if data|model_type == 'Ticket' %}
+            {% if data|obj_type == 'Ticket' %}
                 {% include 'blog/includes/ticket_snippet.html' with ticket=data %}
-            {% else %}
+            {% elif data|obj_type == 'Review'%}
                 {% include 'blog/includes/review_snippet.html' with review=data %}
             {% endif %}
         {% endfor %}
