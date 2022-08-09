@@ -2,17 +2,17 @@
 {% load myfilters %}
 {% block title %} Flux {% endblock %}
 {% block content %}
- <h1 class="block_title">Flux</h1>
-    {% if tickets_reviews %}
+        <h1 class="block_title">Flux</h1>
         {% for data in tickets_reviews %}
-            <div class="obj">
-            {% if data|obj_type == 'Ticket' %}
-                {% include 'blog/includes/ticket_snippet.html' with ticket=data %}
-            {% elif data|obj_type == 'Review' %}
-                {% include 'blog/includes/review_snippet.html' with review=data %}
+            {% if data|type == 'Review' %}
+                <div class="review_ticket">
+                    {% include 'blog/includes/review_snippet.html' with review=data %}
+            {% else %}
+                    {% include 'blog/includes/ticket_snippet.html' with ticket=data %}
+                   </div>
             {% endif %}
-            <div class="obj">
         {% endfor %}
 
-    {% endif %}
 {% endblock %}
+
+

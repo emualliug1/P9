@@ -2,13 +2,13 @@
 <div class="review">
     <div class="review_header">
         <div class="review_title_rating">
-        <h2 class="review_title">{{ data.headline|capfirst }}</h2>
-        <div class="review_rating">
+        <h2 class="review_title">-Review:&ensp;{{ data.headline|capfirst }}</h2>
+        </div>
+    <div class="review_rating">
             <div class="starability-result" data-rating={{ review.rating }}>Rated: {{ review.rating }} stars</div>
         </div>
-        </div>
         <div class="content_menu">
-        <p class="ticket_date">Review:{{ review.user|capfirst }} le {{ review.time_created }}</p>
+        <p class="ticket_date">{{ review.user|capfirst }} le {{ review.time_created }}</p>
          {% if request.get_full_path == "/posts/" %}
             <div class="ticket_button_modify">
              <button type="button" class="btn small" onclick=self.location.href="{% url 'review-update' review.id %}">

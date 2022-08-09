@@ -91,8 +91,7 @@ class PostView(View):
                                            key=lambda obj: obj.time_created,
                                            reverse=True)
 
-        return render(request, self.template_name, context={'tickets_user': tickets_user,
-                                                            'tickets_user_reviews_user': tickets_user_reviews_user})
+        return render(request, self.template_name, context={'tickets_user_reviews_user': tickets_user_reviews_user})
 
 
 class TicketUpdateView(View):
@@ -157,6 +156,7 @@ class ReviewDeleteView(View):
     template_name = 'blog/review_delete.html'
     review = Review
     review_form = ReviewForm
+    ticket = Ticket
 
     def get(self, request, id):
         review = self.review.objects.get(id=id)
@@ -166,6 +166,8 @@ class ReviewDeleteView(View):
     def post(self, request, id):
         review = self.review.objects.get(id=id)
         review.delete()
+        review.ticket.has_review = False
+        review.ticket.save()
         return redirect('posts')
 
 

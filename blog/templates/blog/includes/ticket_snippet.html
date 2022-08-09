@@ -2,9 +2,9 @@
 {% load myfilters %}
 <div class="ticket">
     <div class="ticket_header">
-        <h1 class="ticket_title">{{ ticket.title|capfirst }}</h1>
+        <h1 class="ticket_title">-Ticket:&ensp;{{ ticket.title|capfirst }}</h1>
         <div class="content_menu">
-        <p class="ticket_date">Ticket:{{ ticket.user|capfirst }} le {{ ticket.time_created }}</p>
+        <p class="ticket_date">{{ ticket.user|capfirst }} le {{ ticket.time_created }}</p>
          {% if request.get_full_path == "/posts/" %}
             <div class="ticket_button_modify">
              <button type="button" class="btn small" onclick=self.location.href="{% url 'ticket-update' ticket.id %}">

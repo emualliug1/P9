@@ -256,8 +256,8 @@ input[type="file" i]{
 .ticket, .review{
     display: flex;
     flex-direction: column;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 5%;
+    margin-right: 5%;
     border-radius: 20px ;
     box-shadow: rgba(0, 0, 0, 0.56) 0 22px 70px 4px;
     padding: 10px;
@@ -318,6 +318,17 @@ input[type="file" i]{
 
 .review_rating{
     margin-left: 20px;
+}
+
+.review_ticket{
+    margin-left: 20%;
+    margin-right: 20%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.56) 0 22px 70px 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px ;
 }
 
 .follow{
