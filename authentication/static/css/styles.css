@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
 .asteriskField{
     display: none;
 }
@@ -71,17 +73,22 @@ input[type="file" i]{
 .container_button\>{
     display: flex;
     width: 180px;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .btn{
-    font-family: Consolas,Serif,sans-serif;
+    font-family: Roboto,sans-serif;
     height: 30px;
-    padding: 5px;
+    padding: 0;
+    border-radius: 5px;
+    overflow: hidden;
     background-color: #007bff;
+    font-size: 14px;
+    font-weight: 400;
     color: white;
     border:none;
-    width: 80px;
+    outline: none;
+    width: 70px;
     cursor: pointer;
 }
 
@@ -289,14 +296,23 @@ input[type="file" i]{
     width: 150px;
     padding-right: 10px;
 }
-.ticket_description,.review_text{
+.ticket_description{
     margin: 0;
     padding: 10px;
+}
+
+.review_text{
+    margin: 0;
+    padding: 10px;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
 }
 
 .ticket_text{
     display: flex;
     flex-direction: column;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
 }
 
 .ticket_button_modify{
@@ -328,7 +344,6 @@ input[type="file" i]{
     box-shadow: rgba(0, 0, 0, 0.56) 0 22px 70px 4px;
     padding: 10px;
     margin-bottom: 10px;
-    border-radius: 20px ;
 }
 
 .follow{

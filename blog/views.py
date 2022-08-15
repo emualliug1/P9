@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.views.generic import View
 from .forms import TicketForm, ReviewForm
@@ -10,7 +11,7 @@ from django.db.utils import IntegrityError
 from itertools import chain
 
 
-class TicketView(View):
+class TicketView(LoginRequiredMixin, View):
     template_name = 'blog/ticket.html'
     form_class = TicketForm
 
@@ -28,7 +29,7 @@ class TicketView(View):
         return render(request, self.template_name, context={'form': form})
 
 
-class ReviewView(View):
+class ReviewView(LoginRequiredMixin, View):
     template_name = 'blog/review.html'
     review_form = ReviewForm
     ticket = Ticket
@@ -52,7 +53,7 @@ class ReviewView(View):
         return render(request, self.template_name, context={'ticket': ticket, 'form': form})
 
 
-class TicketReviewView(View):
+class TicketReviewView(LoginRequiredMixin, View):
     template_name = 'blog/ticket_review.html'
     ticket_form = TicketForm
     review_form = ReviewForm
@@ -78,7 +79,7 @@ class TicketReviewView(View):
         return render(request, self.template_name, context={'form_ticket': form_ticket, 'form_review': form_review})
 
 
-class PostView(View):
+class PostView(LoginRequiredMixin, View):
     tickets = Ticket
     reviews = Review
     template_name = 'blog/post.html'
@@ -94,7 +95,7 @@ class PostView(View):
         return render(request, self.template_name, context={'tickets_user_reviews_user': tickets_user_reviews_user})
 
 
-class TicketUpdateView(View):
+class TicketUpdateView(LoginRequiredMixin, View):
     template_name = 'blog/ticket_update.html'
     ticket = Ticket
     ticket_form = TicketForm
@@ -115,7 +116,7 @@ class TicketUpdateView(View):
         return render(request, self.template_name, context={'form': form})
 
 
-class TicketDeleteView(View):
+class TicketDeleteView(LoginRequiredMixin, View):
     template_name = 'blog/ticket_delete.html'
     ticket = Ticket
     ticket_form = TicketForm
@@ -131,7 +132,7 @@ class TicketDeleteView(View):
         return redirect('posts')
 
 
-class ReviewUpdateView(View):
+class ReviewUpdateView(LoginRequiredMixin, View):
     template_name = 'blog/review_update.html'
     review = Review
     review_form = ReviewForm
@@ -152,7 +153,7 @@ class ReviewUpdateView(View):
         return render(request, self.template_name, context={'form': form})
 
 
-class ReviewDeleteView(View):
+class ReviewDeleteView(LoginRequiredMixin, View):
     template_name = 'blog/review_delete.html'
     review = Review
     review_form = ReviewForm
@@ -171,7 +172,7 @@ class ReviewDeleteView(View):
         return redirect('posts')
 
 
-class UserFollowsView(View):
+class UserFollowsView(LoginRequiredMixin, View):
     template_name = 'blog/follow.html'
     user_follow = UserFollows
     user = User
@@ -206,6 +207,7 @@ class UserFollowsView(View):
         return render(request, self.template_name, context={"following": following, "followers": followers})
 
 
+@login_required
 def delete_follow(request, id):
     user = get_object_or_404(User, id=id)
     remove_user = UserFollows.objects.get(user=request.user.id, followed_user=user)
@@ -214,7 +216,7 @@ def delete_follow(request, id):
     return redirect("follow-test")
 
 
-class FluxViews(View):
+class FluxViews(LoginRequiredMixin, View):
     template_name = 'blog/flux.html'
 
     def get(self, request):
